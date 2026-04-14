@@ -119,16 +119,11 @@
     .om-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; }
     .portrait-frame {
       width: 100%; aspect-ratio: 3/4; border: 1px solid var(--border);
-      background: linear-gradient(160deg, #EDE6D8 0%, #D9CFBE 100%);
-      display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden;
+      overflow: hidden;
     }
-    .portrait-frame::before {
-      content: ''; position: absolute; inset: 12px; border: 1px solid var(--border);
-    }
-    .portrait-initials {
-      font-size: 5rem; font-weight: 300; color: var(--gold-light);
-      letter-spacing: 0.1em; font-style: italic;
+    .portrait-frame img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+      display: block;
     }
     .om-text p {
       font-size: 1.2rem; line-height: 1.85; color: var(--mid);
@@ -277,7 +272,7 @@
       <div class="om-grid">
         <div class="om-aside reveal">
           <div class="portrait-frame">
-            <span class="portrait-initials">SBK</span>
+            <img src="sigmund.jpg" alt="Sigmund Bernhard Kruse" />
           </div>
           <div class="facts" style="margin-top: 2rem;">
             <div class="fact">
