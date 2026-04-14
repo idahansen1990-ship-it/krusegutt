@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sigmund Bernhard Kruse — Prest</title>
+  <meta name="description" content="Sigmund Bernhard Kruse er prest i Den norske kirke. Glad i mennesker, friluftsliv og fotball. Velkommen som du er!" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Josefin+Sans:wght@200;300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F7F3EC;
+      --warm-white: #FDFAF6;
+      --gold: #B8975A;
+      --gold-light: #D4B07A;
+      --dark: #2A2318;
+      --mid: #6B5E4A;
+      --soft: #9C8E7A;
+      --border: rgba(184,151,90,0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.5rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(247,243,236,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-name {
+      font-family: 'Josefin Sans', sans-serif; font-weight: 200;
+      font-size: 0.85rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--mid);
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: 'Josefin Sans', sans-serif; font-weight: 300;
+      font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+      text-decoration: none; color: var(--mid); transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden; padding: 8rem 2rem 4rem;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 50%, rgba(184,151,90,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 80% 30%, rgba(42,35,24,0.04) 0%, transparent 60%);
+    }
+    .cross-ornament {
+      position: absolute; top: 12%; right: 8%; opacity: 0.07; transform: rotate(5deg);
+    }
+    .hero-content { position: relative; text-align: center; max-width: 700px; }
+    .hero-label {
+      font-family: 'Josefin Sans', sans-serif; font-weight: 200;
+      font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 2rem;
+      opacity: 0; animation: fadeUp 1s ease 0.2s forwards;
+    }
+    .hero-name {
+      font-size: clamp(3.5rem, 8vw, 6.5rem); font-weight: 300;
+      line-height: 1.0; letter-spacing: -0.01em; color: var(--dark);
+      opacity: 0; animation: fadeUp 1s ease 0.5s forwards;
+    }
+    .hero-name em { font-style: italic; color: var(--gold); }
+    .divider {
+      width: 60px; height: 1px; background: var(--gold); margin: 2.5rem auto;
+      opacity: 0; animation: fadeIn 1s ease 0.9s forwards;
+    }
+    .hero-subtitle {
+      font-size: 1.35rem; font-weight: 300; font-style: italic;
+      color: var(--mid); letter-spacing: 0.05em; line-height: 1.6;
+      opacity: 0; animation: fadeUp 1s ease 1.1s forwards;
+    }
+    .hero-cta {
+      display: inline-block; margin-top: 3.5rem; padding: 1rem 2.5rem;
+      border: 1px solid var(--gold);
+      font-family: 'Josefin Sans', sans-serif; font-weight: 300;
+      font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+      text-decoration: none; color: var(--gold); transition: all 0.4s;
+      opacity: 0; animation: fadeUp 1s ease 1.4s forwards;
+    }
+    .hero-cta:hover { background: var(--gold); color: var(--warm-white); }
+
+    /* SECTIONS */
+    section { padding: 7rem 2rem; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-family: 'Josefin Sans', sans-serif; font-weight: 200;
+      font-size: 0.65rem; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300;
+      line-height: 1.15; color: var(--dark); margin-bottom: 2rem;
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+
+    /* OM */
+    #om {
+      background: var(--warm-white);
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .om-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 5rem; align-items: start; }
+    .portrait-frame {
+      width: 100%; aspect-ratio: 3/4; border: 1px solid var(--border);
+      background: linear-gradient(160deg, #EDE6D8 0%, #D9CFBE 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .portrait-frame::before {
+      content: ''; position: absolute; inset: 12px; border: 1px solid var(--border);
+    }
+    .portrait-initials {
+      font-size: 5rem; font-weight: 300; color: var(--gold-light);
+      letter-spacing: 0.1em; font-style: italic;
+    }
+    .om-text p {
+      font-size: 1.2rem; line-height: 1.85; color: var(--mid);
+      margin-bottom: 1.5rem; font-weight: 300;
+    }
+    .om-text p:first-of-type { font-size: 1.4rem; color: var(--dark); font-style: italic; }
+    .facts { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .fact {
+      display: flex; gap: 1.5rem; align-items: baseline;
+      padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+    }
+    .fact-label {
+      font-family: 'Josefin Sans', sans-serif; font-weight: 200;
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); min-width: 90px;
+    }
+    .fact-value { font-size: 1rem; color: var(--mid); }
+    .hobby-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
+    .hobby-tag {
+      font-family: 'Josefin Sans', sans-serif; font-weight: 300;
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 0.4rem 0.9rem; border: 1px solid var(--border); color: var(--mid);
+    }
+
+    /* TJENESTER */
+    #tjenester { background: var(--cream); }
+    .tjenester-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border); border: 1px solid var(--border); margin-top: 3.5rem;
+    }
+    .tjeneste-card { background: var(--cream); padding: 2.5rem 2rem; transition: background 0.3s; }
+    .tjeneste-card:hover { background: var(--warm-white); }
+    .tjeneste-icon { font-size: 1.8rem; margin-bottom: 1.2rem; display: block; }
+    .tjeneste-card h3 { font-size: 1.35rem; font-weight: 400; color: var(--dark); margin-bottom: 0.8rem; }
+    .tjeneste-card p { font-size: 0.95rem; line-height: 1.75; color: var(--soft); }
+
+    /* SITAT */
+    #sitater { background: var(--dark); color: var(--cream); text-align: center; padding: 8rem 2rem; }
+    .quote-large {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-style: italic; font-weight: 300;
+      line-height: 1.5; color: var(--gold-light); max-width: 750px; margin: 0 auto;
+    }
+    .quote-source {
+      margin-top: 2rem; font-family: 'Josefin Sans', sans-serif; font-weight: 200;
+      font-size: 0.7rem; letter-spacing: 0.4em; text-transform: uppercase; color: var(--soft);
+    }
+
+    /* KONTAKT */
+    #kontakt { background: var(--warm-white); border-top: 1px solid var(--border); }
+    .kontakt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 3rem; }
+    .kontakt-info h3 {
+      font-size: 1.5rem; font-weight: 300; font-style: italic;
+      color: var(--dark); margin-bottom: 2rem;
+    }
+    .kontakt-row { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; align-items: baseline; }
+    .kontakt-key {
+      font-family: 'Josefin Sans', sans-serif; font-weight: 200;
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); min-width: 80px;
+    }
+    .kontakt-val { font-size: 1.05rem; color: var(--mid); }
+    .kontakt-val a {
+      color: var(--mid); text-decoration: none;
+      border-bottom: 1px solid var(--border); transition: border-color 0.3s, color 0.3s;
+    }
+    .kontakt-val a:hover { color: var(--gold); border-color: var(--gold); }
+    .kontakt-form label {
+      display: block; font-family: 'Josefin Sans', sans-serif; font-weight: 200;
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .kontakt-form input, .kontakt-form textarea {
+      width: 100%; padding: 0.9rem 1rem; background: transparent; border: none;
+      border-bottom: 1px solid var(--border);
+      font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--dark);
+      margin-bottom: 1.8rem; outline: none; transition: border-color 0.3s; resize: none;
+    }
+    .kontakt-form input:focus, .kontakt-form textarea:focus { border-bottom-color: var(--gold); }
+    .kontakt-form button {
+      padding: 0.9rem 2.5rem; background: transparent; border: 1px solid var(--gold);
+      font-family: 'Josefin Sans', sans-serif; font-weight: 300;
+      font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); cursor: pointer; transition: all 0.4s;
+    }
+    .kontakt-form button:hover { background: var(--gold); color: var(--warm-white); }
+
+    /* FOOTER */
+    footer {
+      padding: 2.5rem 3rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center; background: var(--cream);
+    }
+    footer p {
+      font-family: 'Josefin Sans', sans-serif; font-weight: 200;
+      font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--soft);
+    }
+
+    /* ANIMATIONS - hero only */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+    /* SCROLL REVEAL - content visible by default, animated only with JS */
+    .reveal { opacity: 1; transform: none; transition: opacity 0.8s ease, transform 0.8s ease; }
+    .js-loaded .reveal { opacity: 0; transform: translateY(30px); }
+    .js-loaded .reveal.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { gap: 1.5rem; }
+      .om-grid, .kontakt-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .tjenester-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-name">Sigmund Bernhard Kruse</span>
+    <ul class="nav-links">
+      <li><a href="#om">Om</a></li>
+      <li><a href="#tjenester">Tjenester</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="hjem">
+    <div class="hero-bg"></div>
+    <svg class="cross-ornament" width="260" height="380" viewBox="0 0 260 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="105" y="0" width="50" height="380" fill="#2A2318"/>
+      <rect x="0" y="110" width="260" height="50" fill="#2A2318"/>
+    </svg>
+    <div class="hero-content">
+      <p class="hero-label">Prest · Friluftsentusiast · Fotballvenn</p>
+      <h1 class="hero-name">Sigmund<br><em>Bernhard</em><br>Kruse</h1>
+      <div class="divider"></div>
+      <p class="hero-subtitle">Glad i mennesker, glad i livet — velkommen som du er</p>
+      <a href="#om" class="hero-cta">Les mer</a>
+    </div>
+  </section>
+
+  <section id="om">
+    <div class="container">
+      <div class="om-grid">
+        <div class="om-aside reveal">
+          <div class="portrait-frame">
+            <span class="portrait-initials">SBK</span>
+          </div>
+          <div class="facts" style="margin-top: 2rem;">
+            <div class="fact">
+              <span class="fact-label">Kirke</span>
+              <span class="fact-value">Den norske kirke</span>
+            </div>
+            <div class="fact">
+              <span class="fact-label">Hobbyer</span>
+              <span class="fact-value">Friluftsliv, fotball, friidrett</span>
+            </div>
+            <div class="fact">
+              <span class="fact-label">Nett</span>
+              <span class="fact-value">krusegutt.no</span>
+            </div>
+          </div>
+        </div>
+        <div class="om-text reveal" style="transition-delay: 0.15s;">
+          <p class="section-label">Om meg</p>
+          <h2 class="section-title">Hei, jeg er <em>Sigmund!</em></h2>
+          <p>Jeg er en prest som elsker mennesker — med alt det innebærer av glede, humor, spørsmål og livets store og små øyeblikk.</p>
+          <p>På fritiden finner du meg gjerne ute i naturen, på løpebanen eller langs sidelinja på en fotballkamp. Jeg tror at et godt liv leves i fellesskap — og det gjelder like gjerne på gressmatta som i kirkerommet.</p>
+          <p>Hos meg er alle velkomne. Enten du er kristen, søkende, tvilende eller bare nysgjerrig — ta kontakt, så tar vi en prat!</p>
+          <div class="hobby-tags">
+            <span class="hobby-tag">🌲 Friluftsliv</span>
+            <span class="hobby-tag">⚽ Fotball</span>
+            <span class="hobby-tag">🏃 Friidrett</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tjenester">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Hva jeg tilbyr</p>
+        <h2 class="section-title">Tjenester &amp; <em>Seremonier</em></h2>
+      </div>
+      <div class="tjenester-grid reveal" style="transition-delay: 0.2s;">
+        <div class="tjeneste-card">
+          <span class="tjeneste-icon">✦</span>
+          <h3>Dåp</h3>
+          <p>Ny i verden — og så mye å glede seg til! Jeg hjelper dere med en dåpsseremoni som er personlig, varm og minneverdig.</p>
+        </div>
+        <div class="tjeneste-card">
+          <span class="tjeneste-icon">✦</span>
+          <h3>Konfirmasjon</h3>
+          <p>En spennende tid med store spørsmål. Jeg møter ungdommen der de er — med åpenhet, respekt og et smil.</p>
+        </div>
+        <div class="tjeneste-card">
+          <span class="tjeneste-icon">✦</span>
+          <h3>Vielse</h3>
+          <p>Deres dag, deres seremoni! Jeg lager en vielse som er skreddersydd for dere — full av kjærlighet og glede.</p>
+        </div>
+        <div class="tjeneste-card">
+          <span class="tjeneste-icon">✦</span>
+          <h3>Begravelse</h3>
+          <p>I de vanskeligste stundene er det godt å ha noen ved siden seg. Jeg hjelper familien med å hedre livet som er levd, med varme og omsorg.</p>
+        </div>
+        <div class="tjeneste-card">
+          <span class="tjeneste-icon">✦</span>
+          <h3>Sjelesorg &amp; samtale</h3>
+          <p>Trenger du noen å snakke med? Jeg lytter — uten fordommer, uten krav. Bare en god samtale over en kopp kaffe.</p>
+        </div>
+        <div class="tjeneste-card">
+          <span class="tjeneste-icon">✦</span>
+          <h3>Gudstjeneste &amp; andakt</h3>
+          <p>Jeg holder gudstjenester og andakter med liv og engasjement — for menigheter, institusjoner og private samlinger.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sitater">
+    <div class="container">
+      <p class="quote-large">«Jeg er kommet for at dere skal ha liv og ha det i overflod.»</p>
+      <p class="quote-source">Johannes 10:10</p>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="container">
+      <div class="reveal">
+        <p class="section-label">Ta kontakt</p>
+        <h2 class="section-title">La oss <em>snakke</em></h2>
+      </div>
+      <div class="kontakt-grid">
+        <div class="kontakt-info reveal" style="transition-delay: 0.1s;">
+          <h3>Ikke nøl med å ta kontakt! Jeg svarer raskt og setter stor pris på alle henvendelser — store som små.</h3>
+          <div class="kontakt-row">
+            <span class="kontakt-key">E-post</span>
+            <span class="kontakt-val"><a href="mailto:sigmund@krusegutt.no">sigmund@krusegutt.no</a></span>
+          </div>
+          <div class="kontakt-row">
+            <span class="kontakt-key">Nettside</span>
+            <span class="kontakt-val"><a href="https://krusegutt.no">krusegutt.no</a></span>
+          </div>
+          <div class="kontakt-row">
+            <span class="kontakt-key">Sted</span>
+            <span class="kontakt-val">Norge</span>
+          </div>
+        </div>
+        <div class="reveal" style="transition-delay: 0.2s;">
+          <form class="kontakt-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="kontakt" />
+            <p style="display:none;"><label>Ikke fyll inn: <input name="bot-field" /></label></p>
+            <div>
+              <label>Navn</label>
+              <input type="text" name="navn" placeholder="Ditt fulle navn" required />
+            </div>
+            <div>
+              <label>E-post</label>
+              <input type="email" name="epost" placeholder="din@epost.no" required />
+            </div>
+            <div>
+              <label>Melding</label>
+              <textarea name="melding" rows="4" placeholder="Hva kan jeg hjelpe deg med?" required></textarea>
+            </div>
+            <button type="submit">Send melding</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Sigmund Bernhard Kruse</p>
+    <p>krusegutt.no</p>
+  </footer>
+
+  <script>
+    document.body.classList.add('js-loaded');
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.05 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
