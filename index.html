@@ -264,7 +264,8 @@
       <div class="divider"></div>
       <p class="hero-subtitle">Glad i mennesker, glad i livet — velkommen som du er</p>
       <a href="#om" class="hero-cta">Les mer</a>
-    </div>
+      <br/><br/>
+      <button onclick="toggleMusic()" id="hero-music-btn" style="background:none;border:none;cursor:pointer;font-family:'Josefin Sans',sans-serif;font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--gold);margin-top:1rem;display:inline-flex;align-items:center;gap:0.5rem;"><span style="font-size:1.2rem;">♪</span> Spill musikk</button>    </div>
   </section>
 
   <section id="om">
@@ -409,7 +410,7 @@
     <span id="music-label">John's Old Bible</span>
   </div>
   <audio id="bg-music" loop>
-    <source src="John's Old Bible - AI.mp3" type="audio/mpeg" />
+    <source src="Johns-Old-Bible-AI.mp3" type="audio/mpeg" />
   </audio>
 
   <script>
@@ -421,10 +422,12 @@
       if (playing) {
         audio.pause();
         btn.textContent = '♪';
+        document.getElementById('hero-music-btn').innerHTML = '<span style="font-size:1.2rem;">♪</span> Spill musikk';
         playing = false;
       } else {
         audio.play();
         btn.textContent = '‖';
+        document.getElementById('hero-music-btn').innerHTML = '<span style="font-size:1.2rem;">‖</span> Pause musikk';
         playing = true;
       }
     }
